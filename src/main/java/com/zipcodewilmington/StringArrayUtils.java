@@ -1,6 +1,8 @@
 package com.zipcodewilmington;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by leon on 1/29/18.
@@ -103,11 +105,9 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        String newArray = Arrays.toString(array).toLowerCase();
         int occurance = 0;
-
-        for (char i = 'a'; i <= 'z'; i++){
-            if (newArray.contains(value.valueOf(i))){
+        for (String i : array){
+            if (i == value){
                 occurance++;
             }
         }
@@ -120,7 +120,15 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        List<String> arr = new ArrayList<String>();
+        int removed = 0;
+        for (String i : array){
+            if (!(i == valueToRemove)){
+                arr.add(i);
+                removed++;
+            }
+        }
+        return arr.toArray(new String[removed]);
     }
 
     /**
@@ -128,7 +136,17 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+        List<String> arr = new ArrayList<String>();
+        String[] arrayCopy = new String[arr.size()];
+
+        for (int i = 0; i < array.length -1; i++){
+            if (array[i] != array[i + 1]){
+                arr.add(array[i]);
+            }
+        }
+        arr.add(array[array.length -1]);
+        arrayCopy = arr.toArray(arrayCopy);
+        return arrayCopy;
     }
 
     /**
@@ -136,6 +154,7 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
+
         return null;
     }
 
